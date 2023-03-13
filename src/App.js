@@ -2,23 +2,22 @@ import React, { useState, useEffect } from 'react';
 import Select  from './Select';
 
 function App() {
-
   const [estados, setEstados] = useState([
     {
       id: 1,
       descricao: 'Minas Gerais',
-      sigla: 'MG'
+      sigla: 'MG',
     },
     {
       id: 2,
       descricao: 'Rio de Janeiro',
-      sigla: 'RJ'
+      sigla: 'RJ',
     },
     {
       id: 3,
       descricao: 'São Paulo',
-      sigla: 'SP'
-    }
+      sigla: 'SP',
+    },
   ]);
   
 
@@ -26,8 +25,8 @@ function App() {
   const mg = {
     id: 1,
     descricao: 'Minas Gerais',
-    sigla: 'MG'
-  }
+    sigla: 'MG',
+  };
 
   return (
     <div>

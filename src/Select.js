@@ -38,7 +38,14 @@ class Select extends Component {
           <div className="br-input">
             <label htmlFor="select-simple">Estados</label>
             <input type="text" placeholder="Selecione o item" />
-            <button className="br-button" type="button" aria-label="Exibir lista" tabIndex="-1" data-trigger="data-trigger"><i className="fas fa-angle-down" aria-hidden="true"></i>
+            <button
+              className="br-button"
+              type="button"
+              aria-label="Exibir lista"
+              tabIndex="-1"
+              data-trigger="data-trigger"
+            >
+              <i className="fas fa-angle-down" aria-hidden="true"></i>
             </button>
           </div>
           <div className="br-list" tabIndex="0">
@@ -62,7 +69,7 @@ class Select extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
