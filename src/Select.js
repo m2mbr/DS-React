@@ -1,31 +1,34 @@
 import '@govbr-ds/core/dist/core.min.css';
-import React, { useState, useEffect } from 'react';
 import { Component } from 'react';
-
 const core = require('@govbr-ds/core/dist/core');
+
 
 class Select extends Component {
   constructor(props) {
     super();
     this.data = props.data
     this.setSelected = props.setSelected
-    this.core = window.core
   }
 
   componentDidMount() {
-    console.log('Teste....')
     const selectList = []
     for (const brSelect of window.document.querySelectorAll('.br-select')) {
-      const brselect = new this.core.BRSelect('br-select', brSelect)
-      brSelect.addEventListener('onChange', ev => this.getItem(selectList[0]))
-      this.brSelect = brSelect
+      const brselect = new core.BRSelect('br-select', brSelect)
+      brSelect.addEventListener('onChange', ev => this.getItem(brselect))
+      this.brSelect = brselect
       selectList.push(brselect)
     }
   }
 
   getItem(select) {
     let value = select.selectedValue
-    this.setSelected(this.data.find(item => item.id == value))
+    if(value !=='-1'){
+      this.setSelected(this.data.find((item) => item.id == value));
+    } else {
+      this.setSelected({});
+    }
+    console.log(value)
+
   }
 
   render() {
@@ -39,17 +42,24 @@ class Select extends Component {
             </button>
           </div>
           <div className="br-list" tabIndex="0">
+            <div className="br-item" tabIndex="-1">
+              <div className="br-radio">
+                <input type="radio" value={-1} id={-1} htmlFor={-1} />
+                <label htmlFor={-1}>{'Não Selecionar nada'}</label>
+              </div>
+            </div>
             {
               this.data.map( item => (
                 <div className="br-item" tabIndex="-1" key={item.id}>
-                <div className="br-radio">
-                  <input id={item.id} type="radio" value={item.id} />
-                  <label htmlFor={item.id}>{item.descricao}</label>
+                  <div className="br-radio">
+                    <input id={item.id} type="radio" value={item.id} />
+                    <label htmlFor={item.id}>{item.descricao}</label>
+                  </div>
                 </div>
-              </div>
-              ))
+                )
+              )
             }
-        </div>
+          </div>
         </div>
       </div>
     )
